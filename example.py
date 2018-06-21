@@ -7,11 +7,12 @@ model = nn.Sequential(
     Detection(16, 5),
 )
 
-optim = torch.optim.SGD(model.parameters(), 0.1)
+optimizer = torch.optim.SGD(model.parameters(), 0.1)
 
-optim.zero_grad()
+optimizer.zero_grad()
 x = torch.rand(2, 3, 50, 50)
 y, _ = model(x)
 
 loss = y.sum()
 loss.backward()
+optimizer.step()
